@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
-from logic import generate_password, save_entry, search_entry
+
+from src.logic import generate_password, save_entry, search_entry
+from src.storage import write_data, read_data
+
 
 class PasswordManagerUI:
     def __init__(self):

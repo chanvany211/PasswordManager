@@ -1,4 +1,4 @@
-from logic import generate_password
+from src.logic import generate_password
 
 def test_password_length():
     pwd = generate_password(12)

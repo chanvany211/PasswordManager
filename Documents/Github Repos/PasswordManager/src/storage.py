@@ -1,5 +1,6 @@
 import os
-from crypto import encrypt_data, decrypt_data
+import json
+from src.crypto import encrypt, decrypt
 
 VAULT = "data/vault.enc"
 
@@ -15,9 +16,15 @@ def read_data():
     if not encrypted.strip():
         return {}
 
-    return decrypt_data(encrypted)
+    # decrypt() returns bytes → decode → load JSON
+    decrypted_bytes = decrypt(encrypted)
+    decrypted_text = decrypted_bytes.decode("utf-8")
+    return json.loads(decrypted_text)
 
 def write_data(data_dict):
-    encrypted = encrypt_data(data_dict)
+    # Convert dict → JSON → bytes → encrypt
+    json_text = json.dumps(data_dict)
+    encrypted = encrypt(json_text.encode("utf-8"))
+
     with open(VAULT, "wb") as f:
         f.write(encrypted)

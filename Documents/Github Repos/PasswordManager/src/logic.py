@@ -1,5 +1,5 @@
 import random
-from storage import write_data, read_data
+from src.storage import write_data, read_data
 
 def generate_password(length=12):
     chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
